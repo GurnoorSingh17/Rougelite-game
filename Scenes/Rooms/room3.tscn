@@ -2,13 +2,16 @@
 
 [ext_resource type="Script" uid="uid://bvyt57nemwa7u" path="res://Scripts/Room.gd" id="1_w786c"]
 [ext_resource type="Texture2D" uid="uid://dwfjeo07h83m7" path="res://art/prototype/Room.png" id="2_rtayk"]
-[ext_resource type="Script" uid="uid://b6k7fno3hbsjy" path="res://Scripts/door.gd" id="3_rtayk"]
+[ext_resource type="PackedScene" uid="uid://dfhmpo4otgjo2" path="res://Scenes/Rooms/door.tscn" id="3_rtayk"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gpseo"]
-size = Vector2(15, 16)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rtayk"]
+size = Vector2(37, 4)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_gpseo"]
-radius = 1.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qmq3m"]
+size = Vector2(56, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jsrh8"]
+size = Vector2(36, 4)
 
 [node name="Room" type="StaticBody2D" unique_id=559791335 node_paths=PackedStringArray("Doors")]
 script = ExtResource("1_w786c")
@@ -20,22 +23,36 @@ texture = ExtResource("2_rtayk")
 hframes = 4
 frame = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1077819719]
-position = Vector2(0.5, 0)
-shape = SubResource("RectangleShape2D_gpseo")
-
-[node name="Door1" type="Area2D" parent="." unique_id=305592312 groups=["Viable"]]
-position = Vector2(0, -8)
-script = ExtResource("3_rtayk")
-direction = "north"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Door1" unique_id=467949892]
-shape = SubResource("CircleShape2D_gpseo")
-metadata/_edit_lock_ = true
-
 [node name="Label" type="Label" parent="." unique_id=1339262461]
 offset_left = -3.0000038
 offset_top = -6.0000005
 offset_right = 36.999996
 offset_bottom = 17.0
 scale = Vector2(0.12, 0.12)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1631742720]
+position = Vector2(-9.5, -30)
+shape = SubResource("RectangleShape2D_rtayk")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="." unique_id=2058971347]
+position = Vector2(17, -17)
+rotation = 0.7853982
+shape = SubResource("RectangleShape2D_rtayk")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="." unique_id=1697739679]
+position = Vector2(0, 30)
+shape = SubResource("RectangleShape2D_qmq3m")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=1953876306]
+position = Vector2(-26, 0)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_qmq3m")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="." unique_id=924610039]
+position = Vector2(30, 10)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_jsrh8")
+
+[node name="Door1" parent="." unique_id=1380414048 instance=ExtResource("3_rtayk")]
+position = Vector2(0, -32)
+direction = "north"

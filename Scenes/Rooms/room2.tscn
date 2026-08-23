@@ -2,17 +2,29 @@
 
 [ext_resource type="Script" uid="uid://bvyt57nemwa7u" path="res://Scripts/Room.gd" id="1_owv72"]
 [ext_resource type="Texture2D" uid="uid://dwfjeo07h83m7" path="res://art/prototype/Room.png" id="2_ey5jp"]
-[ext_resource type="Script" uid="uid://b6k7fno3hbsjy" path="res://Scripts/door.gd" id="3_ey5jp"]
+[ext_resource type="PackedScene" uid="uid://dfhmpo4otgjo2" path="res://Scenes/Rooms/door.tscn" id="3_rfld1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gpseo"]
-size = Vector2(16, 16)
+size = Vector2(60, 4)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_gpseo"]
-radius = 1.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ey5jp"]
+size = Vector2(17, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rfld1"]
+size = Vector2(27, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1lkfe"]
+size = Vector2(20, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vblew"]
+size = Vector2(12, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0igsr"]
+size = Vector2(15, 4)
 
 [node name="Room" type="StaticBody2D" unique_id=559791335 node_paths=PackedStringArray("Doors")]
 script = ExtResource("1_owv72")
-Doors = [NodePath("Door1"), NodePath("Door3")]
+Doors = [NodePath("Door1"), NodePath("Door2")]
 
 [node name="Body" type="Sprite2D" parent="." unique_id=79531439]
 texture_filter = 1
@@ -21,24 +33,59 @@ hframes = 4
 frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1077819719]
+position = Vector2(-2, -30)
 shape = SubResource("RectangleShape2D_gpseo")
 
-[node name="Door1" type="Area2D" parent="." unique_id=305592312 groups=["Viable"]]
-position = Vector2(-8, -3)
-script = ExtResource("3_ey5jp")
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=2000006369]
+position = Vector2(-2, 30)
+shape = SubResource("RectangleShape2D_gpseo")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Door1" unique_id=467949892]
-shape = SubResource("CircleShape2D_gpseo")
-metadata/_edit_lock_ = true
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="." unique_id=829360406]
+position = Vector2(-30, 19.5)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_ey5jp")
 
-[node name="Door3" type="Area2D" parent="." unique_id=470784112 groups=["Viable"]]
-position = Vector2(8, -3)
-script = ExtResource("3_ey5jp")
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="." unique_id=1409740341]
+position = Vector2(26, 19.5)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_ey5jp")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="." unique_id=905118802]
+position = Vector2(30, -2.5)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_rfld1")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="." unique_id=1449641447]
+position = Vector2(26, -22)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_1lkfe")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="." unique_id=2016039366]
+position = Vector2(-30, -18)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_1lkfe")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="." unique_id=1903565112]
+position = Vector2(-22, 9)
+rotation = -3.1415925
+shape = SubResource("RectangleShape2D_vblew")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="." unique_id=1926472551]
+position = Vector2(-22, -10)
+rotation = -3.1415925
+shape = SubResource("RectangleShape2D_vblew")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="." unique_id=969557653]
+position = Vector2(-18, -0.5)
+rotation = -1.5707964
+shape = SubResource("RectangleShape2D_0igsr")
+
+[node name="Door1" parent="." unique_id=1380414048 instance=ExtResource("3_rfld1")]
+position = Vector2(-32, -12)
+
+[node name="Door2" parent="." unique_id=1084463607 instance=ExtResource("3_rfld1")]
+position = Vector2(32, -12)
 direction = "west"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Door3" unique_id=1892891397]
-shape = SubResource("CircleShape2D_gpseo")
-metadata/_edit_lock_ = true
 
 [node name="Label" type="Label" parent="." unique_id=907989347]
 offset_left = -3.0000038

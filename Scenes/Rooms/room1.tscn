@@ -2,13 +2,22 @@
 
 [ext_resource type="Script" uid="uid://bvyt57nemwa7u" path="res://Scripts/Room.gd" id="1_a81mt"]
 [ext_resource type="Texture2D" uid="uid://dwfjeo07h83m7" path="res://art/prototype/Room.png" id="2_dsn0a"]
-[ext_resource type="Script" uid="uid://b6k7fno3hbsjy" path="res://Scripts/door.gd" id="3_dsn0a"]
+[ext_resource type="PackedScene" uid="uid://dfhmpo4otgjo2" path="res://Scenes/Rooms/door.tscn" id="3_dsn0a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dsn0a"]
+size = Vector2(56, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i70oh"]
+size = Vector2(16, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sn4vg"]
+size = Vector2(20, 4)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gpseo"]
-size = Vector2(16, 16)
+size = Vector2(36, 4)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_gpseo"]
-radius = 1.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w8mrb"]
+size = Vector2(28, 4)
 
 [node name="Room" type="StaticBody2D" unique_id=559791335 node_paths=PackedStringArray("Doors")]
 script = ExtResource("1_a81mt")
@@ -20,42 +29,40 @@ texture = ExtResource("2_dsn0a")
 hframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1077819719]
+position = Vector2(0, -30)
+shape = SubResource("RectangleShape2D_dsn0a")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="." unique_id=1353854443]
+position = Vector2(0, 30)
+shape = SubResource("RectangleShape2D_i70oh")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="." unique_id=930267339]
+position = Vector2(-18, 2)
+shape = SubResource("RectangleShape2D_sn4vg")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="." unique_id=2031910757]
+position = Vector2(18, 2)
+shape = SubResource("RectangleShape2D_sn4vg")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=1662126375]
+position = Vector2(-30, -14)
+rotation = 1.5707964
 shape = SubResource("RectangleShape2D_gpseo")
 
-[node name="Door1" type="Area2D" parent="." unique_id=305592312 groups=["Viable"]]
-position = Vector2(-8, -3)
-script = ExtResource("3_dsn0a")
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="." unique_id=650058645]
+position = Vector2(30, -14)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_gpseo")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Door1" unique_id=467949892]
-shape = SubResource("CircleShape2D_gpseo")
-metadata/_edit_lock_ = true
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="." unique_id=1386625415]
+position = Vector2(-10, 18)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_w8mrb")
 
-[node name="Door2" type="Area2D" parent="." unique_id=602780802 groups=["Viable"]]
-position = Vector2(0, -8)
-script = ExtResource("3_dsn0a")
-direction = "north"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Door2" unique_id=1823135690]
-shape = SubResource("CircleShape2D_gpseo")
-metadata/_edit_lock_ = true
-
-[node name="Door3" type="Area2D" parent="." unique_id=2118648920 groups=["Viable"]]
-position = Vector2(0, 8)
-script = ExtResource("3_dsn0a")
-direction = "south"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Door3" unique_id=438563188]
-shape = SubResource("CircleShape2D_gpseo")
-metadata/_edit_lock_ = true
-
-[node name="Door4" type="Area2D" parent="." unique_id=1026959768 groups=["Viable"]]
-position = Vector2(8, -3)
-script = ExtResource("3_dsn0a")
-direction = "west"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Door4" unique_id=680596287]
-shape = SubResource("CircleShape2D_gpseo")
-metadata/_edit_lock_ = true
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="." unique_id=683419911]
+position = Vector2(10, 18)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_w8mrb")
 
 [node name="Label" type="Label" parent="." unique_id=1265022270]
 offset_left = -3.0000038
@@ -63,3 +70,18 @@ offset_top = -6.0000005
 offset_right = 36.999996
 offset_bottom = 17.0
 scale = Vector2(0.12, 0.12)
+
+[node name="Door1" parent="." unique_id=1380414048 instance=ExtResource("3_dsn0a")]
+position = Vector2(-32, -12)
+
+[node name="Door2" parent="." unique_id=43162950 instance=ExtResource("3_dsn0a")]
+position = Vector2(32, -12)
+direction = "west"
+
+[node name="Door3" parent="." unique_id=1419305164 instance=ExtResource("3_dsn0a")]
+position = Vector2(0, -32)
+direction = "north"
+
+[node name="Door4" parent="." unique_id=2015726467 instance=ExtResource("3_dsn0a")]
+position = Vector2(0, 32)
+direction = "south"

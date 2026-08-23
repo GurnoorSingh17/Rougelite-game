@@ -2,13 +2,28 @@
 
 [ext_resource type="Script" uid="uid://bvyt57nemwa7u" path="res://Scripts/Room.gd" id="1_3tidl"]
 [ext_resource type="Texture2D" uid="uid://dwfjeo07h83m7" path="res://art/prototype/Room.png" id="2_weqjt"]
-[ext_resource type="Script" uid="uid://b6k7fno3hbsjy" path="res://Scripts/door.gd" id="3_weqjt"]
+[ext_resource type="PackedScene" uid="uid://dfhmpo4otgjo2" path="res://Scenes/Rooms/door.tscn" id="3_weqjt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gpseo"]
-size = Vector2(16, 16)
+size = Vector2(64, 4)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_gpseo"]
-radius = 1.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_weqjt"]
+size = Vector2(52, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_duw5b"]
+size = Vector2(56, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2wppp"]
+size = Vector2(36, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pb8py"]
+size = Vector2(8, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aukd4"]
+size = Vector2(31, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4pxvk"]
+size = Vector2(47, 4)
 
 [node name="Room" type="StaticBody2D" unique_id=559791335 node_paths=PackedStringArray("Doors")]
 script = ExtResource("1_3tidl")
@@ -21,25 +36,40 @@ hframes = 4
 frame = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1077819719]
+position = Vector2(0, -30)
 shape = SubResource("RectangleShape2D_gpseo")
 
-[node name="Door1" type="Area2D" parent="." unique_id=305592312 groups=["Viable"]]
-position = Vector2(0, 8)
-script = ExtResource("3_weqjt")
-direction = "south"
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=1942967527]
+position = Vector2(-6, 30)
+shape = SubResource("RectangleShape2D_weqjt")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Door1" unique_id=467949892]
-shape = SubResource("CircleShape2D_gpseo")
-metadata/_edit_lock_ = true
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="." unique_id=1643273016]
+position = Vector2(-30, 0)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_duw5b")
 
-[node name="Door2" type="Area2D" parent="." unique_id=310736674 groups=["Viable"]]
-position = Vector2(0, -8)
-script = ExtResource("3_weqjt")
-direction = "north"
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="." unique_id=1915432753]
+position = Vector2(30, -10)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_2wppp")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Door2" unique_id=861352939]
-shape = SubResource("CircleShape2D_gpseo")
-metadata/_edit_lock_ = true
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="." unique_id=372565623]
+position = Vector2(18, 24)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_pb8py")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="." unique_id=1407088958]
+position = Vector2(-13, 16)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_pb8py")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="." unique_id=1348916198]
+position = Vector2(4.5, 18)
+shape = SubResource("RectangleShape2D_aukd4")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="." unique_id=645294548]
+position = Vector2(8.5, 10)
+shape = SubResource("RectangleShape2D_4pxvk")
 
 [node name="Label" type="Label" parent="." unique_id=1304991481]
 offset_left = -3.0000038
@@ -47,3 +77,11 @@ offset_top = -6.0000005
 offset_right = 36.999996
 offset_bottom = 17.0
 scale = Vector2(0.12, 0.12)
+
+[node name="Door1" parent="." unique_id=1380414048 instance=ExtResource("3_weqjt")]
+position = Vector2(0, 32)
+direction = "south"
+
+[node name="Door2" parent="." unique_id=1306733951 instance=ExtResource("3_weqjt")]
+position = Vector2(0, -32)
+direction = "north"

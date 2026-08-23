@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dfhmpo4otgjo2"]
+
+[ext_resource type="Script" uid="uid://b6k7fno3hbsjy" path="res://Scripts/door.gd" id="1_uem52"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gpseo"]
+radius = 4.0
+
+[node name="Door1" type="Area2D" unique_id=1380414048 groups=["Viable"]]
+script = ExtResource("1_uem52")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=372757488]
+shape = SubResource("CircleShape2D_gpseo")
+metadata/_edit_lock_ = true

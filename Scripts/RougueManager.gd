@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 signal rooms_done
 
@@ -10,7 +10,6 @@ signal rooms_done
 var Rooms : Array[Room]
 var is_generating : bool = false
 
-# Direction helpers
 func _direction_to_angle(dir: String) -> float:
 	match dir:
 		"east": return 0.0
@@ -32,12 +31,9 @@ func _ready() -> void:
 	GenerateRooms()
 
 func GenerateRooms() -> void:
-	seed((Rooms.size()+10)*10 + randi_range(0,103647))
-	randomize()
 	if is_generating: return
 	is_generating = true
 
-	# First room at origin
 	var first = CreateRoom(Vector2.ZERO)
 	if first == null:
 		push_error("Failed to create first room")
@@ -68,19 +64,19 @@ func GenerateRooms() -> void:
 	is_generating = false
 	print("Generation finished. Total rooms: ", Rooms.size())
 
-	# ---- Set labels on first and last rooms ----
 	if Rooms.size() > 0:
 		SetRoomLabel(Rooms[0], "First Room")
 	if Rooms.size() > 1:
 		SetRoomLabel(Rooms[-1], "Last Room")
 
-# Helper: set label text (finds child named "Label")
+	# ---- Scale AFTER generation (only the root) ----
+	scale = Vector2(2, 2)
+	print("Root scaled to 2x.")
+
 func SetRoomLabel(room: Room, text: String) -> void:
 	var label = room.get_node_or_null("Label")
 	if label and label is Label:
 		label.text = text
-	else:
-		push_warning("Room has no Label node, or it's not a Label.")
 
 func GetRoomWithViableDoor() -> Room:
 	var shuffled = Rooms.duplicate()
@@ -116,14 +112,23 @@ func CreateRoomAttachedTo(source_room: Room) -> Room:
 
 		var new_door = GetDoorWithOppositeDirection(R, source_door.direction)
 		if new_door != null:
+			source_door.connected_door = new_door
+			source_door.connected_room = R
+			new_door.connected_door = source_door
+			new_door.connected_room = source_room
+
 			var target_dir = _opposite_direction(source_door.direction)
 			var target_angle = _direction_to_angle(target_dir)
 			var current_angle = _direction_to_angle(new_door.direction)
 			var rotation_needed = target_angle - current_angle
 			R.rotation = rotation_needed
 
-			var new_door_global = R.to_global(new_door.position)
-			R.position = source_door.global_position - new_door_global
+			# ---- Use to_global for accuracy ----
+			var door_world = R.to_global(new_door.position)
+			R.global_position = source_door.global_position - door_world
+
+			# ---- Debug: prints should show near-zero difference ----
+			print("Diff after placement: ", source_door.global_position - R.to_global(new_door.position))
 
 			source_room.RemoveViable(source_door)
 			R.RemoveViable(new_door)
