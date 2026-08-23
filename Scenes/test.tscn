@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dc2ybgugxaglu"]
+
+[ext_resource type="Script" uid="uid://cvaunv5t3xj8x" path="res://Scripts/RougueManager.gd" id="1_lc1oi"]
+[ext_resource type="PackedScene" uid="uid://c07v4i6uxm7yx" path="res://Scenes/Rooms/room1.tscn" id="2_35xla"]
+[ext_resource type="PackedScene" uid="uid://d2t27nlfrhq0c" path="res://Scenes/Rooms/room2.tscn" id="3_i3aeo"]
+[ext_resource type="PackedScene" uid="uid://co734ah06wjnc" path="res://Scenes/Rooms/room3.tscn" id="4_5wyu1"]
+[ext_resource type="PackedScene" uid="uid://rylsu4t0312c" path="res://Scenes/Rooms/room4.tscn" id="5_0c07c"]
+
+[node name="Test" type="Node2D" unique_id=660190853]
+script = ExtResource("1_lc1oi")
+RoomScenes = Array[PackedScene]([ExtResource("2_35xla"), ExtResource("3_i3aeo"), ExtResource("4_5wyu1"), ExtResource("5_0c07c")])
+MaxRooms = 12
+GenerationDelay = 0.2
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1239824123]
+zoom = Vector2(3, 3)

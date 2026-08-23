@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://c07v4i6uxm7yx"]
+
+[ext_resource type="Script" uid="uid://bvyt57nemwa7u" path="res://Scripts/Room.gd" id="1_a81mt"]
+[ext_resource type="Texture2D" uid="uid://dwfjeo07h83m7" path="res://art/prototype/Room.png" id="2_dsn0a"]
+[ext_resource type="Script" uid="uid://b6k7fno3hbsjy" path="res://Scripts/door.gd" id="3_dsn0a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gpseo"]
+size = Vector2(16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gpseo"]
+radius = 1.0
+
+[node name="Room" type="StaticBody2D" unique_id=559791335 node_paths=PackedStringArray("Doors")]
+script = ExtResource("1_a81mt")
+Doors = [NodePath("Door1"), NodePath("Door2"), NodePath("Door3"), NodePath("Door4")]
+
+[node name="Body" type="Sprite2D" parent="." unique_id=79531439]
+texture_filter = 1
+texture = ExtResource("2_dsn0a")
+hframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1077819719]
+shape = SubResource("RectangleShape2D_gpseo")
+
+[node name="Door1" type="Area2D" parent="." unique_id=305592312 groups=["Viable"]]
+position = Vector2(-8, -3)
+script = ExtResource("3_dsn0a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door1" unique_id=467949892]
+shape = SubResource("CircleShape2D_gpseo")
+metadata/_edit_lock_ = true
+
+[node name="Door2" type="Area2D" parent="." unique_id=602780802 groups=["Viable"]]
+position = Vector2(0, -8)
+script = ExtResource("3_dsn0a")
+direction = "north"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door2" unique_id=1823135690]
+shape = SubResource("CircleShape2D_gpseo")
+metadata/_edit_lock_ = true
+
+[node name="Door3" type="Area2D" parent="." unique_id=2118648920 groups=["Viable"]]
+position = Vector2(0, 8)
+script = ExtResource("3_dsn0a")
+direction = "south"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door3" unique_id=438563188]
+shape = SubResource("CircleShape2D_gpseo")
+metadata/_edit_lock_ = true
+
+[node name="Door4" type="Area2D" parent="." unique_id=1026959768 groups=["Viable"]]
+position = Vector2(8, -3)
+script = ExtResource("3_dsn0a")
+direction = "west"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door4" unique_id=680596287]
+shape = SubResource("CircleShape2D_gpseo")
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="." unique_id=1265022270]
+offset_left = -3.0000038
+offset_top = -6.0000005
+offset_right = 36.999996
+offset_bottom = 17.0
+scale = Vector2(0.12, 0.12)

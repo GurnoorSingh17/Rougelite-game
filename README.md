@@ -1,2 +1,2 @@
 # Rougelite game
- duh
+ I didnt the fuck know u could open this shit in godot lol
